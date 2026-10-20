@@ -1,0 +1,7 @@
+TechBairro 3.3.1
+
+Como executar
+1. Abra um terminal nesta pasta.
+2. Execute: python techbairro.py
+
+O banco techbairro.db será criado automaticamente na primeira execução.
