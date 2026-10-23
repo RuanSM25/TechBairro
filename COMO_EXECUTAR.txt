@@ -5,3 +5,7 @@ Como executar
 2. Execute: python techbairro.py
 
 O banco techbairro.db será criado automaticamente na primeira execução.
+
+Histórico do código
+O projeto usa Git. Para ver o histórico, execute na pasta do projeto:
+git log --oneline
