@@ -1,75 +1,98 @@
 # TechBairro
 
-A TechBairro é um programa simples para cadastrar, consultar, alterar e excluir clientes de uma associação de moradores.
+A TechBairro é um programa de computador para cadastrar, consultar, alterar e excluir clientes da associação de moradores. A ideia é facilitar o trabalho da pessoa que atende na secretaria.
 
-**Versão:** 3.3.1  
-As mudanças de cada versão estão no [CHANGELOG](CHANGELOG.md).
+**Versão atual:** 3.3.1 · Histórico de mudanças no [CHANGELOG](CHANGELOG.md)
 
-## O que o programa faz
+## Funcionalidades
 
-- Cadastra clientes com nome, telefone, e-mail e endereço.
-- Mostra os clientes cadastrados.
-- Permite alterar e excluir um cadastro.
-- Confere se os campos foram preenchidos, se o telefone tem somente números e se o e-mail parece válido.
+- Cadastrar clientes com nome, telefone, e-mail e endereço.
+- Consultar, alterar e excluir clientes cadastrados, com avisos de preenchimento e confirmação de exclusão.
 
-## O que é necessário
+## Requisitos para execução
 
-- Python 3 instalado.
-- Tkinter disponível para abrir as janelas.
-- Não é preciso instalar bibliotecas externas para a aplicação.
+| Item | Requisito |
+|---|---|
+| Sistema operacional | Windows, macOS ou Linux com ambiente gráfico. |
+| Python | Python 3; versão conferida no ambiente de preparação: **3.13.5**. |
+| Tkinter | Necessário para abrir as janelas. No Ubuntu/Debian, se faltar, instale com `sudo apt install python3-tk`. |
+| Bibliotecas externas | Nenhuma. O arquivo [requirements.txt](requirements.txt) registra isso e cita os módulos usados. |
+| Internet | Necessária para baixar o projeto. Depois do download, o programa funciona sem internet. |
 
-O programa precisa de uma conexão com a internet para baixar o projeto. Depois de baixar, a internet não é necessária para usar a aplicação. Em algumas distribuições Linux, o Tkinter precisa ser instalado separadamente pelo sistema.
+## Instalação
 
-## Como instalar e abrir
+Use uma das opções para baixar o projeto.
 
-### Opção 1 — Clonar com Git
+### Opção A — Baixar com Git
 
-Abra o terminal e execute:
+1. Instale o Git e o Python 3, caso ainda não estejam instalados.
+2. Abra o terminal e execute:
 
 ```bash
 git clone https://github.com/RuanSM25/techbairro.git
 cd techbairro
-python -m pip install -r requirements.txt
-python techbairro.py
+python --version
+python -m tkinter
 ```
 
-### Opção 2 — Baixar o ZIP
-
-1. Abra o repositório no GitHub.
-2. Clique em **Code** e depois em **Download ZIP**.
-3. Extraia o arquivo ZIP e abra um terminal dentro da pasta extraída.
-4. Execute:
+O comando `python --version` mostra a versão do Python. O comando `python -m tkinter` deve abrir uma pequena janela de demonstração; feche essa janela depois de conferir. Em seguida, execute:
 
 ```bash
 python -m pip install -r requirements.txt
 python techbairro.py
 ```
 
-O arquivo `requirements.txt` está incluído para registrar as dependências. Como o projeto não usa bibliotecas externas, o comando não precisa baixar pacotes da aplicação.
+### Opção B — Baixar pelo botão Code / Download ZIP
 
-Ao abrir, aparece a janela **TechBairro — Cadastro de Cliente**. No terminal, o programa mostra `Banco em uso:` e o caminho do arquivo de banco de dados.
+1. Abra o [repositório TechBairro no GitHub](https://github.com/RuanSM25/techbairro).
+2. Clique em **Code** e depois em **Download ZIP**. Extraia o arquivo.
+3. Abra um terminal dentro da pasta extraída, onde está o arquivo `techbairro.py`.
+4. Execute:
 
-## Banco de dados
+```bash
+python --version
+python -m tkinter
+```
 
-O programa cria o arquivo `techbairro.db` na pasta onde está `techbairro.py`, se o banco ainda não existir. Os cadastros ficam nesse arquivo.
+Feche a pequena janela de demonstração do Tkinter e execute:
 
-**Não publique `techbairro.db` no GitHub**, porque ele pode guardar nomes, telefones, e-mails e endereços de pessoas. Para fazer uma cópia de segurança, feche o programa e copie o arquivo para um local protegido.
+```bash
+python -m pip install -r requirements.txt
+python techbairro.py
+```
+
+Se o Windows não reconhecer `python`, tente usar `py` no lugar, por exemplo `py techbairro.py` e `py -m tkinter`.
+
+O comando de instalação lê o arquivo `requirements.txt`. Ele não instala pacotes externos porque a TechBairro usa módulos da biblioteca padrão do Python. Em algumas instalações do Linux, o Tkinter precisa ser instalado separadamente pelo sistema.
+
+### O que deve aparecer ao abrir
+
+Será aberta uma janela chamada **TechBairro — Cadastro de Cliente**, com os campos Nome, Telefone, E-mail e Endereço, os botões Salvar, Cancelar e Consultar e o contador de clientes. No terminal aparecerá uma linha começando com `Banco em uso:` e o caminho do arquivo `techbairro.db`.
+
+## Configuração do banco de dados
+
+Na primeira execução, o programa cria o arquivo `techbairro.db` na mesma pasta de `techbairro.py`, se ele ainda não existir. O arquivo guarda os cadastros realizados. Para conferir qual banco está em uso, veja no terminal a mensagem `Banco em uso:`, seguida do caminho completo.
+
+O banco não fica no repositório porque pode conter nomes, telefones, e-mails e endereços de pessoas. Esses dados são pessoais e não devem ser publicados. O arquivo `.gitignore` contém a regra `*.db` para ajudar a evitar que arquivos de banco sejam adicionados ao Git por engano.
+
+Para fazer uma cópia de segurança, feche o programa primeiro e copie `techbairro.db` para um local protegido. Não envie essa cópia ao GitHub nem a compartilhe com pessoas não autorizadas. Se o programa for instalado em outro computador sem esse arquivo, ele criará um banco novo e vazio.
 
 ## Como usar
 
-Veja o [Manual de uso](docs/manual_de_uso.md), com instruções para cadastrar, consultar, alterar e excluir clientes.
+O passo a passo está no [Manual de uso](docs/manual_de_uso.md).
 
-## Arquivos principais
+## Estrutura do projeto
 
-- `techbairro.py`: janela e ações do programa.
-- `cliente.py`: representa os dados de um cliente.
-- `banco.py`: grava, consulta, altera e remove os registros no SQLite.
-- `validacao.py`: confere os campos preenchidos.
-- `requirements.txt`: informa as dependências do projeto.
-- `CHANGELOG.md`: registra as mudanças feitas nas versões.
+- `techbairro.py`: abre a janela e coordena as ações da tela.
+- `cliente.py`: reúne os dados de cada cliente.
+- `banco.py`: grava, consulta, altera e exclui os registros.
+- `validacao.py`: verifica os campos obrigatórios, o telefone e o e-mail.
+- `testar_validacao.py`: testa as regras de preenchimento.
 - `scripts/`: contém ferramentas auxiliares.
-- `docs/`: contém a documentação de uso.
+- `docs/`: contém documentos de apoio e o manual de uso.
+- `requirements.txt`: informa que não há dependências externas.
+- `CHANGELOG.md`: registra as mudanças entre versões.
 
 ## Autor
 
-Ruan Marques — Técnico em Desenvolvimento de Sistemas, Senac DF.
+Ruan Marques — estudante do Técnico em Desenvolvimento de Sistemas, Senac DF.
