@@ -1,58 +1,74 @@
 # TechBairro
 
-A TechBairro é um programa para cadastrar, consultar, alterar e excluir clientes da associação de moradores.
+A TechBairro é um programa simples para cadastrar, consultar, alterar e excluir clientes de uma associação de moradores.
 
-**Versão atual:** 3.3.1 · Histórico de mudanças no [CHANGELOG](CHANGELOG.md)
+**Versão:** 3.3.1  
+As mudanças de cada versão estão no [CHANGELOG](CHANGELOG.md).
 
-## Funcionalidades
+## O que o programa faz
 
-- Cadastrar clientes com nome, telefone, e-mail e endereço.
-- Consultar, alterar e excluir cadastros.
+- Cadastra clientes com nome, telefone, e-mail e endereço.
+- Mostra os clientes cadastrados.
+- Permite alterar e excluir um cadastro.
+- Confere se os campos foram preenchidos, se o telefone tem somente números e se o e-mail parece válido.
 
-## Requisitos para execução
+## O que é necessário
 
-| Item | Requisito |
-|---|---|
-| Sistema operacional | Windows, macOS ou Linux com ambiente gráfico. |
-| Python | Python 3 (versão indicada na release: 3.13.5). |
-| Tkinter | Necessário para abrir as janelas; no Ubuntu/Debian pode ser preciso instalar com `sudo apt install python3-tk`. |
-| Bibliotecas externas | Nenhuma. |
-| Internet | Necessária para baixar o projeto; depois, não é obrigatória. |
+- Python 3 instalado.
+- Tkinter disponível para abrir as janelas.
+- Não é preciso instalar bibliotecas externas para a aplicação.
 
-## Instalação
+O programa precisa de uma conexão com a internet para baixar o projeto. Depois de baixar, a internet não é necessária para usar a aplicação. Em algumas distribuições Linux, o Tkinter precisa ser instalado separadamente pelo sistema.
 
-### Opção A — Git
+## Como instalar e abrir
+
+### Opção 1 — Clonar com Git
+
+Abra o terminal e execute:
 
 ```bash
 git clone https://github.com/RuanSM25/techbairro.git
 cd techbairro
+python -m pip install -r requirements.txt
 python techbairro.py
 ```
 
-### Opção B — Download ZIP
+### Opção 2 — Baixar o ZIP
 
-No GitHub, clique em **Code → Download ZIP** e extraia o arquivo. Abra um terminal e execute:
+1. Abra o repositório no GitHub.
+2. Clique em **Code** e depois em **Download ZIP**.
+3. Extraia o arquivo ZIP e abra um terminal dentro da pasta extraída.
+4. Execute:
 
 ```bash
+python -m pip install -r requirements.txt
 python techbairro.py
 ```
 
-## Configuração do banco de dados
+O arquivo `requirements.txt` está incluído para registrar as dependências. Como o projeto não usa bibliotecas externas, o comando não precisa baixar pacotes da aplicação.
 
-O programa cria `techbairro.db` na primeira execução, na mesma pasta de `techbairro.py`. O caminho em uso aparece no terminal com a mensagem `Banco em uso:`. O arquivo pode conter dados pessoais e por isso não deve ser publicado. Para fazer uma cópia de segurança, feche o programa e copie o arquivo para um local protegido.
+Ao abrir, aparece a janela **TechBairro — Cadastro de Cliente**. No terminal, o programa mostra `Banco em uso:` e o caminho do arquivo de banco de dados.
+
+## Banco de dados
+
+O programa cria o arquivo `techbairro.db` na pasta onde está `techbairro.py`, se o banco ainda não existir. Os cadastros ficam nesse arquivo.
+
+**Não publique `techbairro.db` no GitHub**, porque ele pode guardar nomes, telefones, e-mails e endereços de pessoas. Para fazer uma cópia de segurança, feche o programa e copie o arquivo para um local protegido.
 
 ## Como usar
 
-Consulte o [Manual de uso](docs/manual_de_uso.md).
+Veja o [Manual de uso](docs/manual_de_uso.md), com instruções para cadastrar, consultar, alterar e excluir clientes.
 
-## Estrutura do projeto
+## Arquivos principais
 
-- `techbairro.py`: tela principal.
-- `cliente.py`: dados do cliente.
-- `banco.py`: grava e consulta os registros.
-- `validacao.py`: valida os campos.
-- `scripts/`: ferramentas auxiliares.
-- `docs/`: documentação.
+- `techbairro.py`: janela e ações do programa.
+- `cliente.py`: representa os dados de um cliente.
+- `banco.py`: grava, consulta, altera e remove os registros no SQLite.
+- `validacao.py`: confere os campos preenchidos.
+- `requirements.txt`: informa as dependências do projeto.
+- `CHANGELOG.md`: registra as mudanças feitas nas versões.
+- `scripts/`: contém ferramentas auxiliares.
+- `docs/`: contém a documentação de uso.
 
 ## Autor
 
